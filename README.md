@@ -20,6 +20,15 @@ I want to board a train from London to France. The train ticket will cost $20.
 
 ## Test
 ```
-cd server
-go test -v
+go test .\server\
+```
+
+## Run Server
+```
+go run .\server\
+```
+
+## Run Client
+```
+go run .\client\
 ```
