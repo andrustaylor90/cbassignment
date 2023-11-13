@@ -1,5 +1,0 @@
-Unit Test with following command : 
-```
-cd server
-go test -v
-```
