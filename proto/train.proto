@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package train;
+option go_package = "/proto";
+
+// The train service definition.
+service TrainService {
+  rpc PurchaseTicket (PurchaseRequest) returns (Receipt) {}
+  rpc GetReceipt (UserRequest) returns (Receipt) {}
+  rpc ViewSeats (SectionRequest) returns (SeatResponse) {}
+  rpc RemoveUser (UserRequest) returns (GenericResponse) {}
+  rpc ModifySeat (ModifySeatRequest) returns (GenericResponse) {}
+}
+
+// Request to purchase a ticket.
+message PurchaseRequest {
+  User user = 1;
+  string from = 2;
+  string to = 3;
+}
+
+// User details.
+message User {
+  string first_name = 1;
+  string last_name = 2;
+  string email = 3;
+}
+
+// Receipt details.
+message Receipt {
+  User user = 1;
+  string from = 2;
+  string to = 3;
+  double price = 4;
+  string seat = 5;
+}
+
+// Request for user-based actions.
+message UserRequest {
+  string email = 1;
+}
+
+// Request to view seats by section.
+message SectionRequest {
+  string section = 1;
+}
+
+// Response for seat viewing.
+message SeatResponse {
+  repeated User users = 1;
+}
+
+// Request to modify a seat.
+message ModifySeatRequest {
+  string email = 1;
+  string new_seat = 2;
+}
+
+// Generic response for some operations.
+message GenericResponse {
+  string message = 1;
+}
